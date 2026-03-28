@@ -4,3 +4,5 @@
    with the compacted summary including: total spend, spend by model, spend by project, busiest sessions, and trends.
 4. Suggest cost optimizations based on the data — e.g., sessions where Opus was used for tasks that Sonnet could handle,
    high cache-creation ratios, or sessions with excessive turns.
+5. **Formatting rule:** Never break a dollar amount (`$X.XX` or `~$X.XX`) across lines — `~$` at end-of-line creates
+   a LaTeX math delimiter in Markdown renderers. Keep the full amount on one line.
