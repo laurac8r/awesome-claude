@@ -1,1 +1,1 @@
-# awesome-bruno
+# awesome-claude
