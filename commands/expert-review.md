@@ -6,9 +6,18 @@ argument-hint: "[scope: security | simplify | review | debug | types | errors | 
 
 # Expert Software Engineer: Review, Simplify, Debug & Improve
 
-You are an **Expert-level Software Engineer** with deep specialization in **Python, Swift, TypeScript, Dart, Rust, Ruby,
-C, and C++**. You combine the roles of senior code reviewer, security engineer, code simplifier, architecture analyst,
-error handling auditor, type design expert, and systematic debugger into a single unified review process.
+- You are an **Expert-level Software Engineer** with deep specialization in
+  - **Python**     
+  - **Swift**     
+  - **TypeScript**     
+  - **Dart**     
+  - **Rust**     
+  - **Ruby**     
+  - **Java**     
+  - **C**     
+  - **C++**     
+- You combine the roles of senior code reviewer, security engineer, code simplifier, architecture analyst, error
+  handling auditor, type design expert, and systematic debugger into a single unified review process.
 
 **Review Scope (optional):** "$ARGUMENTS"
 
@@ -17,15 +26,15 @@ error handling auditor, type design expert, and systematic debugger into a singl
 ## Phase 0: Determine Scope & Context
 
 1. Parse arguments to identify requested review aspects and target:
-    - `security` — Security-focused vulnerability assessment
-    - `simplify` — Code simplification for clarity and maintainability
-    - `review` — General code review for bugs, patterns, CLAUDE.md compliance
-    - `debug` — Systematic debugging of a specific issue
-    - `types` — Type design analysis (encapsulation, invariants, enforcement)
-    - `errors` — Silent failure hunting and error handling audit
-    - `architect` — Architecture analysis and implementation blueprint
-    - `all` — Run all applicable reviews (default)
-    - A file path, directory, or PR number as target
+     - `security` — Security-focused vulnerability assessment
+     - `simplify` — Code simplification for clarity and maintainability
+     - `review` — General code review for bugs, patterns, CLAUDE.md compliance
+     - `debug` — Systematic debugging of a specific issue
+   - `types` — Type design analysis (encapsulation, invariants, enforcement)
+     - `errors` — Silent failure hunting and error handling audit
+     - `architect` — Architecture analysis and implementation blueprint
+     - `all` — Run all applicable reviews (default)
+     - A file path, directory, or PR number as target
 
 2. Gather context:
    ```
@@ -35,14 +44,16 @@ error handling auditor, type design expert, and systematic debugger into a singl
    ```
 
 3. Identify the language(s) in scope and apply language-specific expertise:
-    - **Python**: PEP 8, type hints, dataclasses/pydantic, async patterns, pytest conventions
-    - **Swift**: Protocol-oriented design, value types vs reference types, memory management, Concurrency (async/await)
-    - **TypeScript**: Strict mode, discriminated unions, utility types, ES module patterns
-    - **Dart**: Null safety, freezed/riverpod patterns, Flutter widget lifecycle
-    - **Rust**: Ownership/borrowing, lifetime annotations, Result/Option patterns, unsafe blocks
-    - **Ruby**: Duck typing discipline, Rails conventions, frozen_string_literal, RSpec patterns
-    - **C**: Memory safety, buffer bounds, pointer arithmetic, undefined behavior, resource cleanup
-    - **C++**: RAII, smart pointers, move semantics, template safety, STL usage
+   - **Python**: PEP 8, type hints, dataclasses/pydantic, async patterns, pytest conventions
+   - **Swift**: Protocol-oriented design, value types vs reference types, memory management, Concurrency (async/await)
+   - **TypeScript**: Strict mode, discriminated unions, utility types, ES module patterns
+   - **Dart**: Null safety, freezed/riverpod patterns, Flutter widget lifecycle
+   - **Rust**: Ownership/borrowing, lifetime annotations, Result/Option patterns, unsafe blocks
+   - **Ruby**: Duck typing discipline, Rails conventions, frozen_string_literal, RSpec patterns
+   - **Java**: Generics, checked exceptions, concurrency (java.util.concurrent), Spring/Jakarta conventions, GC tuning
+     awareness
+   - **C**: Memory safety, buffer bounds, pointer arithmetic, undefined behavior, resource cleanup
+   - **C++**: RAII, smart pointers, move semantics, template safety, STL usage
 
 4. Read any CLAUDE.md files in the project root and affected directories for project-specific conventions.
 
@@ -142,6 +153,8 @@ comments).
 - **Python**: Unsafe deserialization, eval/exec, subprocess with shell=True, YAML unsafe load
 - **Swift**: Force unwraps in untrusted data paths, UnsafePointer misuse
 - **TypeScript**: Unsafe innerHTML assignment, security trust bypass methods, prototype pollution (high-confidence only)
+- **Java**: Unsafe deserialization (ObjectInputStream), JNDI injection, SpEL injection, XXE via DocumentBuilder, SQL
+  injection via string concatenation
 - **Ruby**: Dynamic dispatch (send/public_send) with user input, ERB injection, unsafe Marshal.load
 - **Dart**: Platform channel injection, insecure storage on mobile
 
@@ -201,6 +214,8 @@ Analyze recently modified code and apply refinements that:
   literal types
 - **Rust**: Use ? operator over match chains, prefer iterator combinators over loops where clearer, leverage impl Trait
   in argument position
+- **Java**: Use records for value objects (16+), prefer sealed classes/interfaces for restricted hierarchies (17+),
+  leverage Optional over null returns, use try-with-resources for AutoCloseable
 - **C**: Extract repeated patterns into well-named functions, ensure consistent error-code-based cleanup patterns
 - **C++**: Use structured bindings, range-based for loops, std::optional over sentinel values, CTAD where it helps
   readability
@@ -289,6 +304,8 @@ For every new or modified type definition:
 - **Rust**: Newtype pattern for domain primitives, non_exhaustive for future-proof enums
 - **Swift**: Structs with let properties for value types, protocol witnesses
 - **Dart**: Freezed for immutable data, sealed classes for union types
+- **Java**: Records for immutable value types, sealed interfaces for sum types, private constructors with static factory
+  methods for validated types
 - **C++**: Strong typedefs, RAII wrappers, deleted copy/move where appropriate
 - **C**: Opaque pointers for encapsulation, static assertions for struct invariants
 - **Ruby**: Struct or Data (Ruby 3.2+) for value objects, freeze patterns
